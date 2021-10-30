@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"it.develhope.zoo","l":"Animal"},{"p":"it.develhope.zoo","l":"Food"},{"p":"it.develhope.zoo","l":"Start"},{"p":"it.develhope.zoo","l":"Zookeeper"}];updateSearchResults();
