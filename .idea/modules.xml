@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/01-HelloWord/01-HelloWord.iml" filepath="$PROJECT_DIR$/01-HelloWord/01-HelloWord.iml" />
+      <module fileurl="file://$PROJECT_DIR$/02-ClassesAndObjects/02-ClassesAndObjects.iml" filepath="$PROJECT_DIR$/02-ClassesAndObjects/02-ClassesAndObjects.iml" />
+      <module fileurl="file://$PROJECT_DIR$/03-JavaDoc/03-JavaDoc.iml" filepath="$PROJECT_DIR$/03-JavaDoc/03-JavaDoc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/04-Methods/04-Methods.iml" filepath="$PROJECT_DIR$/04-Methods/04-Methods.iml" />
+      <module fileurl="file://$PROJECT_DIR$/05-Inheritance/05-Inheritance.iml" filepath="$PROJECT_DIR$/05-Inheritance/05-Inheritance.iml" />
+      <module fileurl="file://$PROJECT_DIR$/06-OverrideDefaultMethods/06-OverrideDefaultMethods.iml" filepath="$PROJECT_DIR$/06-OverrideDefaultMethods/06-OverrideDefaultMethods.iml" />
+      <module fileurl="file://$PROJECT_DIR$/08-ArrayAndList/08-ArrayAndList.iml" filepath="$PROJECT_DIR$/08-ArrayAndList/08-ArrayAndList.iml" />
+      <module fileurl="file://$PROJECT_DIR$/09-MapAndSet/09-MapAndSet.iml" filepath="$PROJECT_DIR$/09-MapAndSet/09-MapAndSet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/14-TheIf/14-TheIf.iml" filepath="$PROJECT_DIR$/14-TheIf/14-TheIf.iml" />
+      <module fileurl="file://$PROJECT_DIR$/15-ForConstruct/15-ForConstruct.iml" filepath="$PROJECT_DIR$/15-ForConstruct/15-ForConstruct.iml" />
+      <module fileurl="file://$PROJECT_DIR$/16-WhileConstruct/16-WhileConstruct.iml" filepath="$PROJECT_DIR$/16-WhileConstruct/16-WhileConstruct.iml" />
+      <module fileurl="file://$PROJECT_DIR$/17-SwitchConstruct/17-SwitchConstruct.iml" filepath="$PROJECT_DIR$/17-SwitchConstruct/17-SwitchConstruct.iml" />
+      <module fileurl="file://$PROJECT_DIR$/18-Accessibility/18-Accessibility.iml" filepath="$PROJECT_DIR$/18-Accessibility/18-Accessibility.iml" />
+      <module fileurl="file://$PROJECT_DIR$/21-Enumerations/21-Enumerations.iml" filepath="$PROJECT_DIR$/21-Enumerations/21-Enumerations.iml" />
+      <module fileurl="file://$PROJECT_DIR$/22-Exceptions/22-Exceptions.iml" filepath="$PROJECT_DIR$/22-Exceptions/22-Exceptions.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/java-examples.iml" filepath="$PROJECT_DIR$/.idea/java-examples.iml" />
+    </modules>
+  </component>
+</project>
