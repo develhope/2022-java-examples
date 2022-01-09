@@ -1,101 +1,120 @@
 package it.develhope.arrayAndList;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import it.develhope.arrayAndList.entities.*;
+
+import java.util.*;
 
 public class StartArrayList {
 
-    public static void main(String ...args){
-        List<String> myList = new ArrayList<>();
-        myList.add("One");
-        myList.add("Two");
-        myList.add("Three");
+    public static void main(String[] args) {
+        List<IAnimal> animals = new ArrayList<>(5);
+        animals.add(new Leo("Alex"));
+        animals.add(new Zebra("Martin"));
+        animals.add(new Dolphin("Dolphin"));
 
-        Animal animalLion = new Lion();
-        List<Animal> myListOfAnimals = new ArrayList<>();
+        animals.remove(0);
+        System.out.println("-------");
 
-        myListOfAnimals.add(animalLion);
-        myListOfAnimals.add(new Zebra());
-        myListOfAnimals.add(new Lion());
-        myListOfAnimals.add(new Zebra());
+        Animal penguin = new Animal("Soldato", "5kmph", false, true);
+        animals.add(penguin);
 
-        List<Animal> myListOfAnimals2 = new ArrayList<>();
-        myListOfAnimals2.add(new Penguin());
-        myListOfAnimals2.add(new Penguin());
+        animals.remove(penguin);
+        System.out.println("------");
+        animals.add(penguin);
 
+        System.out.println("Size: " + animals.size());
 
-        Animal firstOfanimals = myListOfAnimals.get(0);
-        Animal lastOfanimals  = myListOfAnimals.get(myListOfAnimals.size()-1);
+        IAnimal animal = animals.get(1);
+        //Dolphin animalDolphin = (Dolphin)animal; - Casting
+        System.out.println("------");
 
-        //myListOfAnimals.add(2, new Lion());
-        //myListOfAnimals.set(2, new Lion());
-        myListOfAnimals.addAll(myListOfAnimals2);
-        myListOfAnimals.addAll(2, myListOfAnimals2);
+        /*animals.sort((o1, o2) -> {
+            Animal a1 = (Animal)o1;
+            Animal a2 = (Animal)o2;
+            return a2.name.compareTo(a1.name);
+        });*/
 
-        List aNewList = new ArrayList();
-        aNewList.addAll(Arrays.asList(new String[] {"a", "b", "c"}));
+        animals.get(0).setAge(10);
+        animals.get(1).setAge(5);
+        animals.get(2).setAge(8);
 
-
-        List<String> nations = new ArrayList<>();
-        nations.add("USA");
-        nations.add("Italy");
-        nations.add("France");
-        nations.add("UK");
-
-
-        System.out.println("-----------------------------");
-        nations.stream().forEach(singleElementList -> {
-            System.out.println(singleElementList);
-        });
-        System.out.println("-----------------------------");
-
-        nations.stream().map(singleElementList -> {
-            return "--" + singleElementList + "--";
-        }).filter(singleElementList -> {
-            return !singleElementList.equals("--Italy--") ;
-        }).forEach(singleElementList -> {
-            System.out.println(singleElementList);
-        });
-        System.out.println("-----------------------------");
-
-        List<Integer> numbers = new ArrayList<>();
-        numbers.add(0);
-        numbers.add(1);
-        numbers.add(2);
-        numbers.add(3);
-        numbers.add(0);
-
-        System.out.println("----------------------------- TakeWhile vS filter");
-        numbers.stream().takeWhile(singleElement -> {
-            return singleElement <3;
-        }).forEach(singleElementList -> {
-            System.out.println(singleElementList);
-        });
-        System.out.println("-----------------------------");
-        numbers.stream().filter(singleElement -> {
-            return singleElement <3;
-        }).forEach(singleElementList -> {
-            System.out.println(singleElementList);
-        });
-        System.out.println("-----------------------------");
-
-        boolean allMatchnumber = numbers.stream().allMatch(singleElement -> {
-            return singleElement <3;
+        animals.sort((o1, o2) -> {
+            return o2.getAge() - o1.getAge();
         });
 
-        boolean anyMatchnumber =  numbers.stream().anyMatch(singleElement -> {
-            return singleElement <3;
+        /*animals.sort(new Comparator<IAnimal>() {
+            @Override
+            public int compare(IAnimal o1, IAnimal o2) {
+                return 0;
+            }
+        });*/
+
+        System.out.println(Arrays.toString(animals.toArray()));
+
+        animals.set(2, animal);
+
+        animals.stream().forEach(iAnimal -> {
+            iAnimal.setAge((int)(Math.random()*15));
         });
 
-        //numbers.stream().filter().map().takeWhile().dropWhile().toList();
+        List animalsMoreThan5 = animals.stream().filter(singleAnimal -> {
+            return singleAnimal.getAge() > 5;
+        }).toList();
 
-        System.out.println("ALL vs ANY" + allMatchnumber + " - ANY:" + anyMatchnumber);
+        animals.stream().filter(singleAnimal -> {
+            return singleAnimal.getAge() > 5;
+        });
 
-        //myListOfAnimals.remove(animalLion);
+        List<Integer> animalsInteger = animals.stream().map(iAnimal -> iAnimal.getAge()).toList();
 
-        System.out.println("End");
+        // One animal must meet the porperty
+        boolean isOneAnimalMoreThan5 = animals.stream().anyMatch(singleAnimal -> {
+            return singleAnimal.getAge() > 5;
+        });
 
+        // All animals must meet the porperty
+        boolean isAllAnimalMoreThan5 = animals.stream().allMatch(singleAnimal -> {
+            return singleAnimal.getAge() > 5;
+        });
+
+        Optional<IAnimal> minAnimal = animals.stream().min((o1, o2) -> {
+            return o1.getAge() - o2.getAge();
+        });
+
+        Optional<IAnimal> maxAnimal = animals.stream().max((o1, o2) -> {
+            return o1.getAge() - o2.getAge();
+        });
+
+        //Avoid null problem
+        if(minAnimal.isPresent()){
+            System.out.println("The youngest animal is " + minAnimal.get().toString() );
+        }
+
+        //Avoid null problem
+        if(maxAnimal.isPresent()){
+            System.out.println("The older animal is " + maxAnimal.get().toString() );
+        }
+
+        boolean isThereAnimal = animals.stream().filter(iAnimal -> {
+            return ((Animal)iAnimal).canSwim;
+        }).anyMatch(iAnimal -> {
+            return iAnimal.getAge() >5;
+        });
+
+        animals.stream().filter(iAnimal -> {
+            return ((Animal)iAnimal).canSwim;
+        }).map(iAnimal -> {
+            return iAnimal.getAge();
+        }).forEach(age ->{
+            System.out.println("The age is "  + age);
+        });
+
+        List<Integer> i = new ArrayList<>();
+        List<Long> l = new ArrayList<>();
+        List<Boolean> b = new ArrayList<>();
+        List<Double> d = new ArrayList<>();
+        //List<double> d = new ArrayList<double>(); // WRONG!!
+
+        System.out.println();
     }
 }
