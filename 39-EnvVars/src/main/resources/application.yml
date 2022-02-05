@@ -1,0 +1,25 @@
+server:
+  port: 5000
+
+---
+environment: integration
+server:
+  port: 3000
+
+---
+environment: test
+myCustomVarTree:
+  customVar: 42
+server:
+  port: 4000
+
+---
+environment: qa
+server:
+  port: 8975
+
+---
+environment: production
+server:
+  port: 8000
+
