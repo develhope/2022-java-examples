@@ -1,0 +1,28 @@
+<html>
+<head>
+    <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+  
+    </head>
+    <body>
+        <button id="clickMe">ClickMe</button>
+
+        <script>
+            $("#clickMe").on('click', function(){
+                console.log("Clicked");
+                $.ajax({
+                    url: "http://localhost:8080",
+                    type: "GET",
+                    success: function(data){
+                        console.log(data);
+                    },
+                    error: function(error){
+                        console.error(error);
+                    }
+                });
+            })
+        </script>
+    </body>
+</html>
