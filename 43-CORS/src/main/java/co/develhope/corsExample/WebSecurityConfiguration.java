@@ -12,14 +12,24 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import java.util.Arrays;
 
 @EnableWebSecurity
-public class WebConfiguration  extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration defaultCors = new CorsConfiguration().applyPermitDefaultValues();
-        defaultCors.setAllowedOrigins(Arrays.asList("https://localhost:3000", "https://localhost:5500","https://test.myWebsite.com","https://myWebsite.com"));
+        defaultCors.addAllowedOrigin("http://localhost:5510");
+        defaultCors.addAllowedOrigin("https://mywebsite.tst");
+        defaultCors.addAllowedOrigin("https://mywebsite.pre");
+        defaultCors.addAllowedOrigin("https://mywebsite.it");
+
         source.registerCorsConfiguration("/**", defaultCors);
+
+        /*CorsConfiguration adminCorsConfiguration = new CorsConfiguration().applyPermitDefaultValues();
+        source.registerCorsConfiguration("/admin/**", adminCorsConfiguration);
+
+        CorsConfiguration appCorsConfiguration = new CorsConfiguration().applyPermitDefaultValues();
+        source.registerCorsConfiguration("/app/**", appCorsConfiguration);*/
         return source;
     }
 
@@ -28,11 +38,9 @@ public class WebConfiguration  extends WebSecurityConfigurerAdapter {
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authorizeRequests()
                 .antMatchers("/**").permitAll()
-                .anyRequest().authenticated();
+                .anyRequest().permitAll();
 
         http.cors();
-
-
         http.csrf().disable();
     }
 }

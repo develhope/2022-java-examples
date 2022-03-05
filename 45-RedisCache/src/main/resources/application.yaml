@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: test
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create
+  h2:
+    console:
+      enabled: true
+  jackson:
+    serialization:
+      FAIL_ON_EMPTY_BEANS: false
+
+redis:
+  database: develhopeRedisExample
+  password: SjL36rdB70QFae5E0kOlWaQasirFQpdG
+  host: redis-16491.c8.us-east-1-4.ec2.cloud.redislabs.com
+  port: 16491
+
+
+---
+environment: test
+redis:
+  host: localhost
+  port: 6380
+  password:
